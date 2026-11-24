@@ -1,1 +1,0 @@
-print("Proyecto POO listo")
