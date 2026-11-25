@@ -65,7 +65,7 @@ class Plato(Producto):
 
 
 class Bebida(Producto):
-    # precio_base = precio por vaso. La jarra cuesta 3 veces el vaso.
+
     def __init__(self, nombre, precio_base, presentacion):
         super().__init__(nombre, precio_base)
         self.presentacion = presentacion
@@ -91,7 +91,7 @@ class Bebida(Producto):
         return True
 
     def contar_platos(self):
-        return 0  # las bebidas no pagan envase
+        return 0  
 
 
 class ComponenteCombo:
@@ -132,7 +132,7 @@ class Combo(Producto):
     def __init__(self, nombre, descuento=0.10):
         self.__componentes = []
         self.descuento = descuento
-        super().__init__(nombre, 1)  # precio_base se actualiza al agregar componentes
+        super().__init__(nombre, 1)  
 
     @property
     def componentes(self):
@@ -157,11 +157,11 @@ class Combo(Producto):
                 break
         else:
             self.__componentes.append(ComponenteCombo(producto, cantidad))
-        # precio_base = suma de sus productos sin descuento
+        
         self._precio_base = sum(c.calcular_subtotal() for c in self.__componentes)
 
     def calcular_precio(self):
-        # cada componente calcula su precio, aunque sea otro combo
+        
         suma = sum(c.calcular_subtotal() for c in self.__componentes)
         return round(suma * (1 - self.__descuento), 2)
 
